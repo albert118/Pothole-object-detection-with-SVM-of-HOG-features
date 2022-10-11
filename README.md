@@ -28,3 +28,15 @@ The data set that we selected are from Kaggle and GitHub the dataset link are sh
 # Guides
 
 ## Using GitHub
+
+## Set Up Python Environment for Development
+
+Using Python verison 3.9.+ to 3.10.0, set up the environment like so.
+
+Create and source your choice of virtual environment, eg. [venv](https://virtualenv.pypa.io/en/latest/). I also recommend the [win wrapper](https://pypi.org/project/virtualenvwrapper-win/) if you're on Windows. Activate it, then install the dependencies with pip like so,
+
+```
+// once in your development environ
+pip install -r requirements
+```
+
