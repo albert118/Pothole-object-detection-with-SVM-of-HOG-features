@@ -40,3 +40,7 @@ Create and source your choice of virtual environment, eg. [venv](https://virtual
 pip install -r requirements
 ```
 
+## [Glossary of ML Terms and Software](https://github.com/albert118/UTS-Professional-Studio-MyRobotPlot/blob/master/Docs/Collecting%20notes.md)
+
+_Click me 🔼_
+
