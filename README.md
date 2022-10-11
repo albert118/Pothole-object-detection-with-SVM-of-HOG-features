@@ -27,7 +27,17 @@ The data set that we selected are from Kaggle and GitHub the dataset link are sh
 
 # Guides
 
-## Using GitHub
+## Using GitHub / Git
+
+As is standard, the `master` branch is protected and cannot be pushed to directly. You will receive an error if you try.
+Checking out a local development -> then squash merging to master is the process that ensures everyone sees and understands the new changes.
+
+The [GitHub desktop app](https://desktop.github.com/) or command line are great choices, VS Code has a great integration too with plenty of extensions.
+
+Then these guides are a good read
+
+* [branching and merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+* [GitHub for beginners](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
 ## Set Up Python Environment for Development
 
