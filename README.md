@@ -1,4 +1,4 @@
-# Image-processing-and-pattern-recognition-2022-grip-27
+# Image Processing and Pattern Recognition (2022 Group 27)
 
 2022 Spring Session UTS Image Processing Project Repository. 
 
