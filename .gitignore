@@ -131,3 +131,11 @@ dmypy.json
 # Venv ignores
 Scripts/*
 share/*
+
+
+# Datasets
+# Don't upload a 9GB dataset
+
+data/biankatpas/Dataset/*
+data/biankatpas/PreviewImages/*
+data/kaggle/Dataset*

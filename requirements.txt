@@ -8,3 +8,5 @@ tqdm
 requests
 autopep8
 sklearn
+scipy
+Pillow
