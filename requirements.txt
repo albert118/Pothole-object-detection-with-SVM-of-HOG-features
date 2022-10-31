@@ -1,0 +1,10 @@
+scikit-learn
+numpy
+pandas
+matplotlib
+seaborn
+urllib3
+tqdm
+requests
+autopep8
+sklearn
