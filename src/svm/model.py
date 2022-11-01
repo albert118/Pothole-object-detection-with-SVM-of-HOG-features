@@ -7,6 +7,10 @@ from sklearn.preprocessing import StandardScaler
 esp = 1e-5
 
 class Model:
+    """
+    Thin wrapper on the SVM scikit model
+    https://scikit-learn.org/stable/auto_examples/svm/plot_iris_svc.html#sphx-glr-auto-examples-svm-plot-iris-svc-py
+    """
     def __init__(self, **kwargs):
         kwargs.setdefault('max_iter', 1e3)
 
