@@ -42,7 +42,7 @@ class Hog_Extractor:
         self._images = []
 
     def load_resources(self, image_resources, pool=None):
-        print("loading image resources")
+        _logger.info("loading image resources")
 
         if not pool:
             for fn in image_resources:
@@ -55,11 +55,11 @@ class Hog_Extractor:
                 zip(image_resources, [self.scale_factor] * len(image_resources))
             )
 
-        print("finished loading image resources")
+        _logger.info("finished loading image resources")
         return self
 
     def apply_filters(self):
-        print("applying image filters and resizing")
+        _logger.info("applying image filters and resizing")
         self._processed = [
             # Gaussian blurs the edges in road elements
             gaussian(
@@ -74,7 +74,7 @@ class Hog_Extractor:
         return self
 
     def run_hog(self, graph_output: bool=False):
-        print("running HOG extractor")
+        _logger.info("running HOG extractor")
         self.hog_features = []
 
         for image in self._processed:

@@ -11,16 +11,20 @@ src_dir = Path(Path(Path(__file__).parent).parent).parent
 
 
 class Extractor:
-    def __init__(self):
+    def __init__(self, **kwargs):
+        kwargs.setdefault('biankatpas_limit', 100)
+
+        [self.__setattr__(key, kwargs.get(key)) for key in kwargs]
+
         self.merged_frame = None
         self._sets = []
 
-    def open_biankatpas(self, scan_dir, limit: int=0):
+    def open_biankatpas(self, scan_dir):
         image_resources = scan_directory(scan_dir, "*_RAW.jpg")
         self.biankatpas_df = pd.DataFrame(image_resources, columns=["resource_name"])
 
         # limit the content
-        if (limit != 0): self.biankatpas_df = self.biankatpas_df[:limit]
+        if (self.biankatpas_limit != 0): self.biankatpas_df = self.biankatpas_df[:self.biankatpas_limit]
 
         self._sets.append(self.biankatpas_df)
         self.biankatpas_df["dataset"] = "Biankatpas"
@@ -67,7 +71,7 @@ class Extractor:
 #    ID   #    resource_name    #   dataset   # class (True/False) #
 ####################################################################
 
-def extract_training_data():
+def extract_training_data(config: dict):
     biankatpas_fn = "data/biankatpas"
     kaggle_fn = "data/kaggle/Dataset/Train data"
     # notably, train_df.csv content is excluded here
@@ -75,9 +79,9 @@ def extract_training_data():
 
     try:
         return (
-            Extractor()
+            Extractor(**config)
                 .open_biankatpas(Path(src_dir, biankatpas_fn))
-                .open_kaggle_train(Path(src_dir, kaggle_fn))
+                .open_kaggle_train(Path(src_dir, kaggle_fn), )
                 .add_training_labels()
                 .merge_sets()
                 .extract()
@@ -92,7 +96,7 @@ def extract_training_data():
 #    ID   #    resource_name    #   dataset #
 #############################################
 
-def extract_testing_data():
+def extract_testing_data(config: dict):
     biankatpas_fn = "data/biankatpas"
     kaggle_fn = "data/kaggle/Dataset/Test data"
     limit_testing_size = 300
@@ -102,7 +106,7 @@ def extract_testing_data():
     try:
         return (
             Extractor()
-                .open_biankatpas(Path(src_dir, biankatpas_fn), limit=limit_testing_size)
+                .open_biankatpas(Path(src_dir, biankatpas_fn))
                 .open_kaggle_test(Path(src_dir, kaggle_fn))
                 .merge_sets()
                 .extract()
