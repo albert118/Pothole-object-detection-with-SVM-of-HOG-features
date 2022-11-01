@@ -77,11 +77,6 @@ class Hog_Extractor:
         print("running HOG extractor")
         self.hog_features = []
 
-        # HOG params
-        # orientations = 4
-        # pixels_per_cell = (16, 16)
-        # cells_per_block = (2, 2)
-
         for image in self._processed:
             if graph_output:
                 descriptor, hog_image = hog(
