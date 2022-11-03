@@ -1,7 +1,9 @@
 import logging
 from multiprocessing import Pool
 
+import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay
 from sklearn.model_selection import train_test_split
 
 from extractor import Extractor as e
@@ -51,6 +53,21 @@ def create_dataset(pool, config):
     
     return raw
 
+def plot_results(model, X, y):
+    _, sub = plt.subplots(2)
+    plt.subplots_adjust(wspace=0.4, hspace=0.4)
+
+    score = model.model.score(X, y)
+    logger.info(f"score of {score*100}%")
+
+    conf_mat = ConfusionMatrixDisplay.from_estimator(model.model, X, y, ax=sub[0])
+    sub[0].set_title("Confusion Matrix")
+
+    roc = RocCurveDisplay.from_estimator(model.model, X, y, ax=sub[1])
+    sub[1].set_title("ROC (with AUC)")
+
+    plt.show()
+
 def train_and_eval(logger, dataset, config):
     model = Model(**config)
 
@@ -62,9 +79,8 @@ def train_and_eval(logger, dataset, config):
     x_train, x_test, y_train, y_test = train_test_split(X, y)
 
     model.train(x_train, y_train)
+    plot_results(model, x_test, y_test)
 
-    score = model.model.score(x_test, y_test)
-    logger.info(f"score of {score*100}%")
 
 def run(logger, pool, config):
     # raw = create_dataset(pool, config)
