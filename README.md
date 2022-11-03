@@ -25,24 +25,19 @@ Create and source your choice of virtual environment, eg. [venv](https://virtual
 pip install -r requirements
 ```
 
-## Download the dependent datasets
+## Set Up the Dependent Datasets
 
-Two dependent datasets must be compiled into a single source before running the pipeline. They are sourced from Kaggle and GitHub the dataset link are showed below  
+Two dependent datasets must be compiled into a single source before running the pipeline. They are sourced from Kaggle and GitHub. See the data [README](/data/README.md)
 
-[Kaggle dataset](https://www.kaggle.com/datasets/sovitrath/road-pothole-images-for-pothole-detection?select=PotholeDataset.pdf )
+## Running the script
 
-* 4409 records
+After activating your virtualenv and installing dependencies, run the following,
 
-[GitHub dataset from the portugues project](https://github.com/biankatpas/Cracks-and-Potholes-in-Road-Images-Dataset)
+```
+python runner.py
+```
 
-* 1235 records 
-
-## Compiling the raw dataset
-
-
-
-# The Data set  
-
+This will run the pipeline and graph some results. The accuracy will be logged to command line.
 
 # Guides
 
