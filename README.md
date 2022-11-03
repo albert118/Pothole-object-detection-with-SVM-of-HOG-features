@@ -34,6 +34,7 @@ Two dependent datasets must be compiled into a single source before running the 
 After activating your virtualenv and installing dependencies, run the following,
 
 ```
+cd src
 python runner.py
 ```
 
