@@ -12,7 +12,7 @@ class Model:
     https://scikit-learn.org/stable/auto_examples/svm/plot_iris_svc.html#sphx-glr-auto-examples-svm-plot-iris-svc-py
     """
     def __init__(self, **kwargs):
-        kwargs.setdefault('max_iter', 1e3)
+        kwargs.setdefault('max_iter', 1e4)
 
         [self.__setattr__(key, kwargs.get(key)) for key in kwargs]
 

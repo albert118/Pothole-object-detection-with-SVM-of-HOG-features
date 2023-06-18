@@ -77,7 +77,7 @@ class Hog_Extractor:
         _logger.info("running HOG extractor")
         self.hog_features = []
 
-        for image in self._processed:
+        for idx, image in enumerate(self._processed):
             if graph_output:
                 descriptor, hog_image = hog(
                     image, 
@@ -88,7 +88,7 @@ class Hog_Extractor:
                 )
 
                 self.hog_features.append(descriptor)
-                graph_hog_image(image, hog_image)
+                graph_hog_image(self._images[idx], hog_image)
 
             else:
                 descriptor = hog(
@@ -108,7 +108,7 @@ class Hog_Extractor:
 
 
 def display_extracted_hog_descriptors(image_resources: pd.Series, config: dict): 
-
+    _logger.info("previewing extracted HOG feature descriptors")
     try:
         return (
             Hog_Extractor(**config)
