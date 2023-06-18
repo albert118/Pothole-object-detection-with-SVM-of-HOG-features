@@ -1,10 +1,13 @@
 import logging
 from multiprocessing import Pool
 
+import numpy as np
+
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 
 from extractor import Extractor as e
 from feature_extractor import hog_extractor as hg
@@ -30,7 +33,6 @@ config = {
     "hog_cells_per_block": 2,            # HOG param
     "n_jobs": 16,                        # number of job pools to create (multi threading)
 }
-
 
 def load_dataset(logger, pool, config): 
     # bug with creating then loading adds the index col 'Unnamed: 0'
@@ -79,8 +81,8 @@ def train_and_eval(logger, dataset, config):
     x_train, x_test, y_train, y_test = train_test_split(X, y)
 
     model.train(x_train, y_train)
+    predicted = model.predict(x_test)
     plot_results(model, x_test, y_test)
-
 
 def run(logger, pool, config):
     # raw = create_dataset(pool, config)
